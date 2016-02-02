@@ -3,7 +3,7 @@ import urllib
 import json
 import time
 
-import authkeys
+import authkey
 import Hodor
 
 class Updates():
