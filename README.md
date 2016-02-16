@@ -5,7 +5,7 @@ Obviously this will be a very basic example but instead of <i>"Hello World!"</i>
 <p>Getting started is as easy as <a href="https://core.telegram.org/bots#botfather">creating your bot</a><br/>Just add the <strong>authrorization token</strong> you got from <i>BotFather</i> to <b>authkey.py</b> and you're good to go.</p>
 But don't let the name decive you... though the bot example here is basic, you can do a lot of cool stuff with it, like getting email or reddit updates, integrating it with your IoT application, getting top twitter trends and what not.
 (How cool it would be to control your <a href='https://s-media-cache-ak0.pinimg.com/originals/4d/32/f1/4d32f142871c29466f303c2c80f24ed4.gif'>raspberry pi with telegram</a>)
-You're only limited by your imagination.
+You're only limited by your imagination.<br/>
 ![alt acess token for your bot] (http://i.imgur.com/EYYvHC1.png)<br/>
 Add the token you recived for your bot (as shown above) to <b>authkey.py</b>
 ````python
@@ -22,7 +22,7 @@ The program consists of just 4 methods.
  - ````send````
  - ````update````
 
-<p><i>Update</i> function connects with Telegram's server for update every 15 seconds (by calling telegram's <a href="https://core.telegram.org/bots/api#getupdates">getUpdates</a> method)
+<p>````update```` method connects with Telegram's server for update every 15 seconds (by calling telegram's <a href="https://core.telegram.org/bots/api#getupdates">getUpdates</a> method)
 
 ````python
 def update(self):
@@ -31,11 +31,11 @@ def update(self):
   try:
     r = urllib.urlopen(call_url)
     response = json.loads(r.read())
-    if r.code == 200: #checks the status code of the bot
-      return response
+    if r.code == 200: #checks the status code of the bot. 200 means everything's Okay
+      return response 
     else:
-      print "HTTP ERROR: {}".format(r.code)
-      return []
+      print "HTTP ERROR: {}".format(r.code) #Output to console
+      return [] #returns an empty list which is delt with inside manager method
   except IOError:
     time.sleep(2)
     print "Bypassing [IOError]"
@@ -87,10 +87,8 @@ def process_json(self, json_data):
     self.offset = msg['update_id'] #keeping track of the update ID
     chat_id = msg['message']['chat']['id'] #chat ID of the current user 
     try:
-      '''
-      msg['message']['text'] key will not be present if user sends a image/sticker/video etc
-      (Anything except text-messages)
-      '''
+      #The key msg['message']['text'] will not be present if user sends a image/sticker/video etc.
+      #(Anything except text-messages)
       text = msg['message']['text']
       print "{} : {}".format(self.offset, text)
       message = Hodor.randomMessage(text) #getting a random `HODOR` message
@@ -119,4 +117,4 @@ PS: It is important that the offset variable is accsible across all functions in
 <b>Now for the technicalities:</b><br/>
 It dosen't take a rocket scientist to figure out that this method is not realtime. If you're looking for realtime updates you will have to use <a href="https://en.wikipedia.org/wiki/Webhook">Webhook</a>, there are some <a href="https://core.telegram.org/bots/samples#python"> awesome templates</a> for doing the same. <br/><br/>
 In the worst case scenario you'll have to wait 15 seconds for the update, ofcource as i mentioned earlier you can reduce or increase this limit (in ````manager```` method), but there's a catch, as you go closer to 0 seconds though you'll be able to get update and respond to updates quickly you might face network clogging and/or high CPU usage. Decisions, Decisions!<br/><br/>
-In genral if your application requires update in less than 2 seconds, you'll probably live a happier life with Webhooks.
+In general if your application requires update in less than 2 seconds, you'll probably live a happier life with Webhooks.
