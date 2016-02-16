@@ -5,7 +5,7 @@ Obviously this will be a very basic example but instead of <i>"Hello World!"</i>
 <p>Getting started is as easy as <a href="https://core.telegram.org/bots#botfather">creating your bot</a><br/>Just add the <strong>authrorization token</strong> you got from <i>BotFather</i> to <b>authkey.py</b> and you're good to go.</p>
 But don't let the name decive you... though the bot example here is basic, you can do a lot of cool stuff with it, like getting email or reddit updates, integrating it with your IoT application, getting top twitter trends and what not.
 (How cool it would be to control your <a href='https://s-media-cache-ak0.pinimg.com/originals/4d/32/f1/4d32f142871c29466f303c2c80f24ed4.gif'>raspberry pi with telegram</a>)
-You're only limited by your imagination.<br/>
+You're only limited by your imagination.<br/><br/>
 ![alt acess token for your bot] (http://i.imgur.com/EYYvHC1.png)<br/>
 Add the token you recived for your bot (as shown above) to <b>authkey.py</b>
 ````python
