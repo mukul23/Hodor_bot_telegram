@@ -67,7 +67,10 @@ def manager(self):
     message_list = self.json_to_list(updated_data) #anatomy of the json response
     continue
 ````
+As you can see the program updates every 15 seconds ( the program sleeps for the given duration and <a href="http://stackoverflow.com/a/529052">barely consumes your system's resources, if any.</a>). You can change this limit as per your requirment. Now after the dragon has woken up from sleep it calls the <i>update method</i> (Which fetches updates, duh!) and then <i>json_to_list</i> method which processes the updates accordingly.
+(Actually if you're nuts, you can switch back and forth.)
 
-Now for the fun part, the second half of json_to_list function
+Now for the fun part, the second half of <b>json_to_list</b> method
+
 ![] (http://i.imgur.com/2zvAzYw.png)
 ...
