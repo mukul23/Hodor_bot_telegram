@@ -18,11 +18,11 @@ class Updates():
             updated_data = self.update() #Checking for new messages
             if not updated_data: #in case there's an IO error
                 continue
-            message_list = self.json_to_list(updated_data) #anatomy of the json response
+            message_list = self.process_json(updated_data) #anatomy of the json response
             continue
 
 
-    def json_to_list(self, json_data):
+    def process_json(self, json_data):
         messages = len(json_data['result']) #nubmer of new messages since the last update
 
         for msg in json_data['result']:  #going through each new message one at a time.
