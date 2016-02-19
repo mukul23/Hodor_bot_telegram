@@ -3,12 +3,12 @@ import urllib
 import json
 import time
 
-import authkeys
+import authkey
 import Hodor
 
 class Updates():
     def __init__(self):
-        self.token = authkeys.token()
+        self.token = authkey.token()
         self.offset = ""
         self.manager()
 
