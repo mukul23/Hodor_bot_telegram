@@ -63,6 +63,5 @@ class Updates():
             return []
         return response
 
-
-run = Updates()
-
+if __name__ == '__main__':
+    run = Updates()
